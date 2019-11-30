@@ -37,7 +37,7 @@ beforeDestroy,destroyed;
 //当created完成之后，他会先去判断实例中是否含有"el"选项，如果没有则会调用vm.$mount(el)方法，执行下一步
 //接着判断是否含有"template"挂载项，有的话，把它解析成一个render function （template的编译过程）
             beforeMount(){
- //beforeMount在有了render function的时候才会执行，此时还没有将编译完的模板渲染到页面上,执行完render function后，就会调用mounted这个钩子函数，mounted挂载完毕后，实例就算走完流程了
+ //beforeMount在有了render function的时候才会执行，此时还没有将编译完的模板渲染到页面上,执行完render function后,创建vm.$el并用它来替换el,之后就会调用mounted这个钩子函数，mounted挂载完毕后，实例就算走完流程了
             mounted(){
                 // 发起ajax 获取真实dom
             },

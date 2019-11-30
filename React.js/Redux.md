@@ -138,7 +138,7 @@ react-redux提出了**“智能”**组件和**“笨拙”**组件相分离的�
 
 #### provider组件
 
-Provider组件的作用，就是给后代组件提供store对象。通常需要放到入口的js文件中。
+Provider组件的作用，就是给后代组件提供store对z象。通常需要放到入口的js文件中。
 
 ```js
 import React from 'react'

@@ -24,7 +24,7 @@
 
 - 定义一个install函数,Vuex是一个插件,当Vue.use(Vuex)是就会触发这个install这个函数
 - 利用mixin这个方法,将store对象,混入到所有创建的vue实例中
-- 利用beforeEach分别遍历store类中的getters ,mutations,以及actions  定义每一个挂载项的方法
+- 利用forEach分别遍历store类中的getters ,mutations,以及actions  定义每一个挂载项的方法
 - 同时在store这个类,new上一个Vue,来时state中的数据变为响应式
 
 代码

@@ -1,4 +1,4 @@
-### 知识点
+### 0知识点
 
 http .Tcp协议(tcp连接时的三次握手,四次挥手)
 
@@ -143,11 +143,11 @@ OPTIONS：options方法用于询问请求URI资源支持的方法
 
 http协议本身是无状态的 ，不会记录是各个客户端发送的请求访问服务端
 
-会话（打开浏览器，访问一个url，关闭浏览器这个过程称为会话） cookie ，session就是用来做会话控制
+会话（打开浏览器，访问一个url，关闭浏览器这个过程称为会话） cookie ，session就是用来做会话控制,会话控制离不开**token**这个概念:token简单来讲就是访问资源的凭证
 
 ##### cookie 
 
-- 保存每次会话的标志，把标志留在浏览器沙上，是服务器种植给浏览器，在种植时，可能通过domain（允许访问的域）,path（路径）,exprix（保存时间）,size,httpOnly（是否只允许服务端来操作cookie）来设置cookie
+- 保存每次会话的标志，把标志留在浏览器上，是服务器种植给浏览器，在种植时，可能通过domain（允许访问的域）,path（路径）,exprix（保存时间）,size,httpOnly（是否只允许服务端来操作cookie）来设置cookie
 - 解决http无状态的问题，但是每次请求都会在请求头带上cookie 浪费流量
 - 而且可以在浏览器上被修改，不安全，储存大小为4k
 
@@ -165,11 +165,41 @@ http协议本身是无状态的 ，不会记录是各个客户端发送的请求
 
 #### JWT
 
-json web token
+(json web token):顾名思义就是json结构的token
 
+- header(用于描述元信息)
+- payload(你希望向服务端传递的信息)
+- signature(签名)
 
+创建签名要分一下几个步骤
+
+1. 从服务端拿到秘钥,假设为secret
+
+2. 将header进行base64编码 假设为headerstr
+
+   ```js
+   jwt的header
+   {
+   "alg": "HS256",//算法
+   "typ": "JWT"//token的类型
+   }
+   ```
+
+   ]()
+
+3. 将payload进行base64,假设结果为playloadstr
+
+4. 拼接headerstr和palyloadstr字符串
+
+5. 以data和secret作为参数,使用hash算法计算出签名
 
  
+
+```js
+// 伪代码
+data = base64urlEncode( header ) + “.” + base64urlEncode( payload )
+signature = Hash( data, secret );
+```
 
 
 
